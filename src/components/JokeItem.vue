@@ -6,13 +6,21 @@ defineProps<{
   joke: Joke;
 }>();
 
-const { addFavorite } = useFavorites();
+const { addFavorite, removeFavorite, isFavorite } = useFavorites();
+
+const handleClick = (id: number) => {
+  if (isFavorite.value(id)) {
+    removeFavorite(id);
+  } else {
+    addFavorite(id);
+  }
+};
 </script>
 
 <template>
   <article>
     <h2>{{ joke.setup }}</h2>
     <p>{{ joke.punchline }}</p>
-    <button @click="addFavorite(joke.id)">LIKE</button>
+    <button @click="handleClick(joke.id)">{{ isFavorite(joke.id) }}</button>
   </article>
 </template>

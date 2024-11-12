@@ -1,4 +1,4 @@
-import { useQueries, useQuery } from "@tanstack/vue-query";
+import { useQueries } from "@tanstack/vue-query";
 import { computed, ref } from "vue";
 import { api } from "../api";
 
@@ -31,5 +31,7 @@ export const useFavorites = () => {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteIds.value));
   };
 
-  return { query, addFavorite, removeFavorite };
+  const isFavorite = computed(() => (id: number) => favoriteIds.value.includes(id));
+
+  return { query, addFavorite, removeFavorite, isFavorite };
 };
