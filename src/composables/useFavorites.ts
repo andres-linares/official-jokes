@@ -4,7 +4,7 @@ const FAVORITES_KEY = "favorites";
 
 export const useFavorites = () => {
   const favoriteIds = ref(
-    JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]")
+    JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]"),
   );
 
   const addFavorite = (id: number) => {
@@ -14,7 +14,7 @@ export const useFavorites = () => {
 
   const removeFavorite = (id: number) => {
     favoriteIds.value = favoriteIds.value.filter(
-      (jokeId: number) => jokeId !== id
+      (jokeId: number) => jokeId !== id,
     );
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteIds.value));
   };
