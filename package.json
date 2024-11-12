@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
+    "lint:eslint": "eslint --fix .",
     "lint:prettier": "prettier --check ."
   },
   "dependencies": {
@@ -16,6 +17,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.31.0",
     "prettier": "3.3.3",
     "typescript": "~5.6.2",
     "vite": "^5.4.10",
