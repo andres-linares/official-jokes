@@ -1,6 +1,12 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import { router } from "./router";
-import { VueQueryPlugin } from "@tanstack/vue-query";
+import { VueQueryPlugin, VueQueryPluginOptions } from "@tanstack/vue-query";
 
-createApp(App).use(VueQueryPlugin).use(router).mount("#app");
+const vueQueryPluginOptions: VueQueryPluginOptions = {
+  queryClientConfig: {
+    defaultOptions: { queries: { staleTime: Infinity } },
+  },
+};
+
+createApp(App).use(VueQueryPlugin, vueQueryPluginOptions).use(router).mount("#app");
