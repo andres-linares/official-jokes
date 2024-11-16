@@ -21,6 +21,9 @@ export default tseslint.config(
         extraFileExtensions: [".vue"],
       },
     },
+    rules: {
+      "one-var": "off",
+    },
   },
   {
     files: ["**/*.js"],

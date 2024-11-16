@@ -6,9 +6,9 @@ defineProps<{
   joke: Joke;
 }>();
 
-const { addFavorite, removeFavorite, isFavorite } = useFavorites(),
+const { addFavorite, removeFavorite, isFavorite } = useFavorites();
 
- handleClick = (id: number) => {
+const handleClick = (id: number) => {
   if (isFavorite.value(id)) {
     removeFavorite(id);
   } else {
