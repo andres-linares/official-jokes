@@ -37,7 +37,7 @@ select {
   width: fit-content;
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
-  background: var(--color-header);
-  color: var(--color-header-text);
+  background: var(--color-primary);
+  color: var(--color-primary-text);
 }
 </style>

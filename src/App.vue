@@ -15,8 +15,8 @@ body {
   --color-background: #fff4e6;
   --color-background-alt: #fff;
   --color-text: #0d103a;
-  --color-header: #565b5a;
-  --color-header-text: #f5f5f5;
+  --color-primary: #565b5a;
+  --color-primary-text: #f5f5f5;
 
   background-color: var(--color-background);
   font-family: "Manrope", sans-serif;
