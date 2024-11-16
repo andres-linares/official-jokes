@@ -70,7 +70,7 @@ const color = computed(() => {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
   100% {
     transform: scale(1);
@@ -78,7 +78,7 @@ const color = computed(() => {
 }
 
 .joke-card.favorite {
-  animation: expand 600ms ease-out forwards;
+  animation: expand 400ms ease-out forwards;
 }
 
 .star {

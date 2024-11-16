@@ -24,9 +24,3 @@ const error = computed(() => query.isError.value);
     <LoadingIntersector :loading="loading" @intersect="query.fetchNextPage" />
   </section>
 </template>
-
-<style scoped>
-section {
-  margin-top: 5vh;
-}
-</style>
