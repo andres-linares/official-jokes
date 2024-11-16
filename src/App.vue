@@ -13,6 +13,8 @@ import { RouterView } from "vue-router";
 body {
   --page-max-width: 70rem;
   --color-background: #fff5e7;
+  --color-header: #565b5a;
+  --color-header-text: #f5f5f5;
 
   background-color: var(--color-background);
   font-family: "Open Sans", sans-serif;

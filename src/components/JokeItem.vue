@@ -25,7 +25,7 @@ const handleClick = () => {
 <template>
   <article>
     <sub>{{ joke.type }}</sub>
-    <h2>{{ joke.setup }}</h2>
+    <strong>{{ joke.setup }}</strong>
     <p>{{ joke.punchline }}</p>
     <IconButton label="favorite" @click="handleClick">
       <IconStar :filled="isJokeFavorite" />
@@ -34,6 +34,11 @@ const handleClick = () => {
 </template>
 
 <style scoped>
+article {
+  display: flex;
+  flex-direction: column;
+}
+
 sub {
   font-size: 0.8rem;
   color: #666;

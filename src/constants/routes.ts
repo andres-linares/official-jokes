@@ -1,4 +1,4 @@
 export enum RouteName {
-  HOME = "home",
-  FAVORITES = "favorites",
+  HOME = "Home",
+  FAVORITES = "Favorites",
 }

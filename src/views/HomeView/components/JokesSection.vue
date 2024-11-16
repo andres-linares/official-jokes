@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import JokeItem from "../../../components/JokeItem.vue";
 import { useRandomJokes } from "../../../composables/useRandomJokes";
+import JokesList from "../../../components/JokesList.vue";
 
 const { query } = useRandomJokes();
 
@@ -10,11 +10,17 @@ const data = computed(() => query.data.value);
 
 <template>
   <section>
-    <h2>Jokes</h2>
-    <ul>
-      <li v-for="joke in data" :key="joke.id">
-        <JokeItem :joke="joke" />
-      </li>
-    </ul>
+    <div>
+      <h2>Jokes</h2>
+    </div>
+    <JokesList v-if="data" :jokes="data" />
   </section>
 </template>
+
+<style scoped>
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+</style>

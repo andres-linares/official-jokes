@@ -20,7 +20,8 @@ import { RouterLink } from "vue-router";
 
 <style scoped>
 header {
-  background: var(--color-background);
+  background: var(--color-header);
+  color: var(--color-header-text);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   padding: 0.75rem 2rem;
   position: sticky;

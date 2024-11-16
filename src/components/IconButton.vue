@@ -19,9 +19,10 @@ button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  padding: 0.5rem;
   border-radius: 50%;
   transition: background-color 0.3s;
+  width: fit-content;
 }
 
 button:hover {

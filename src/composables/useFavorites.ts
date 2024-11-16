@@ -7,14 +7,24 @@ const FAVORITES_KEY = "favorites";
 export const useFavorites = () => {
   const page = ref(1);
 
-  const favoriteIds = ref(JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]"));
+  const favoriteIds = ref(
+    JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]") as number[],
+  );
+
+  const favoritesQueries = computed(() => {
+    return favoriteIds.value.map((id) => {
+      return {
+        queryKey: ["favorite-joke", id],
+        queryFn: () => api.getJokeById(id),
+      };
+    });
+  });
 
   const query = useQueries({
-    queries: favoriteIds.value.map((id: number) => ({
-      queryKey: ["joke", id],
-      queryFn: () => api.getJokeById(id),
-    })),
-    combine: (results) => ({ data: results.map((result) => result.data) }),
+    queries: favoritesQueries,
+    combine: (results) => ({
+      data: results.filter((result) => !!result.data).map((result) => result.data),
+    }),
   });
 
   const addFavorite = (id: number) => {
