@@ -7,6 +7,7 @@ const FAVORITES_KEY = "favorites";
 
 export const useFavorites = () => {
   const page = ref(1);
+  const type = ref("");
 
   const favoriteIds = ref(
     JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]") as number[],
@@ -28,6 +29,12 @@ export const useFavorites = () => {
     }),
   });
 
+  const jokes = computed(() => {
+    if (!type.value) return query.value.data;
+
+    return query.value.data.filter((joke) => joke.type === type.value);
+  });
+
   const addFavorite = (id: number) => {
     favoriteIds.value.push(id);
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteIds.value));
@@ -41,5 +48,5 @@ export const useFavorites = () => {
 
   const isFavorite = computed(() => (id: number) => favoriteIds.value.includes(id));
 
-  return { page, query, addFavorite, removeFavorite, isFavorite };
+  return { page, type, query, jokes, addFavorite, removeFavorite, isFavorite };
 };
