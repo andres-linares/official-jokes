@@ -35,6 +35,9 @@ export const useFavorites = () => {
     combine: (results) => ({
       data: results.filter((result) => !!result.data).map((result) => result.data),
       isSuccess: results.every((result) => result.isSuccess),
+      isFetching: results.some((result) => result.isFetching),
+      isLoading: results.some((result) => result.isLoading),
+      isError: results.some((result) => result.isError),
     }),
   });
 

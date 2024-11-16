@@ -9,7 +9,7 @@ import JokeTypeSelect from "../../components/JokeTypeSelect.vue";
 const { query, type } = useRandomJokes();
 
 const data = computed(() => query.data.value || []);
-const loading = computed(() => query.isFetchingNextPage.value);
+const loading = computed(() => query.isFetching.value);
 const error = computed(() => query.isError.value);
 </script>
 
@@ -20,7 +20,7 @@ const error = computed(() => query.isError.value);
 
   <section v-if="!error">
     <JokeTypeSelect v-model="type" />
-    <JokesList :jokes="data" />
+    <JokesList :jokes="data" :loading="loading" />
     <LoadingIntersector :loading="loading" @intersect="query.fetchNextPage" />
   </section>
 </template>

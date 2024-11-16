@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { Joke } from "../types/joke";
 import JokeItem from "./JokeItem.vue";
+import JokeSkeleton from "./JokeSkeleton.vue";
 
 defineProps<{
   jokes: Joke[];
+  loading: boolean;
 }>();
 </script>
 
@@ -12,6 +14,10 @@ defineProps<{
     <li v-for="joke in jokes" :key="joke.id">
       <JokeItem :joke="joke" />
     </li>
+
+    <template v-if="loading">
+      <JokeSkeleton v-for="i in 10" :key="i" />
+    </template>
   </ul>
 </template>
 
