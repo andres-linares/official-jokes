@@ -34,6 +34,7 @@ onMounted(() => {
 div {
   display: flex;
   justify-content: center;
+  padding-block: 5vh;
 }
 
 .loader {

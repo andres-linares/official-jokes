@@ -4,8 +4,9 @@ import { useRandomJokes } from "../../composables/useRandomJokes";
 import JokesList from "../../components/JokesList.vue";
 import LoadingIntersector from "../../components/LoadingIntersector.vue";
 import ErrorState from "../../components/ErrorState.vue";
+import JokeTypeSelect from "../../components/JokeTypeSelect.vue";
 
-const { query } = useRandomJokes();
+const { query, type } = useRandomJokes();
 
 const data = computed(() => query.data.value || []);
 const loading = computed(() => query.isFetchingNextPage.value);
@@ -18,6 +19,7 @@ const error = computed(() => query.isError.value);
   </ErrorState>
 
   <section v-if="!error">
+    <JokeTypeSelect v-model="type" />
     <JokesList :jokes="data" />
     <LoadingIntersector :loading="loading" @intersect="query.fetchNextPage" />
   </section>
