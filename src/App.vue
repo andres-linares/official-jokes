@@ -19,7 +19,8 @@ body {
   --color-header-text: #f5f5f5;
 
   background-color: var(--color-background);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
   color: var(--color-text);
 }
 </style>

@@ -1,6 +1,7 @@
 import { useQueries } from "@tanstack/vue-query";
 import { computed, ref } from "vue";
 import { api } from "../api";
+import { QueryKey } from "../constants/queries";
 
 const FAVORITES_KEY = "favorites";
 
@@ -14,7 +15,7 @@ export const useFavorites = () => {
   const favoritesQueries = computed(() => {
     return favoriteIds.value.map((id) => {
       return {
-        queryKey: ["favorite-joke", id],
+        queryKey: [QueryKey.FAVORITE_JOKE, id],
         queryFn: () => api.getJokeById(id),
       };
     });
@@ -34,6 +35,7 @@ export const useFavorites = () => {
 
   const removeFavorite = (id: number) => {
     favoriteIds.value = favoriteIds.value.filter((jokeId: number) => jokeId !== id);
+
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteIds.value));
   };
 

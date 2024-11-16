@@ -12,18 +12,13 @@ const loading = computed(() => query.isFetching.value);
 
 <template>
   <section>
-    <div>
-      <h2>Jokes</h2>
-    </div>
     <JokesList v-if="data" :jokes="data" />
     <LoadingIntersector :loading="loading" @intersect="query.fetchNextPage" />
   </section>
 </template>
 
 <style scoped>
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+section {
+  margin-top: 5vh;
 }
 </style>
