@@ -79,11 +79,13 @@ const color = computed(() => {
 
 .joke-setup {
   font-weight: 700;
+  white-space: break-spaces;
 }
 
 .joke-punchline {
   font-size: 1.1rem;
   font-weight: 600;
+  white-space: break-spaces;
 }
 
 .joke-type {
