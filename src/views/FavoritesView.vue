@@ -25,7 +25,7 @@ const error = computed(() => query.value.isError);
 
   <JokesList v-if="loading" :jokes="[]" :loading="fetching" />
 
-  <EmptyState v-if="success && data.length === 0" title="No jokes yet">
+  <EmptyState v-if="success && jokes.length === 0" title="No jokes yet">
     Go to the home page to add some jokes to your favorites.
   </EmptyState>
   <ErrorState v-if="error" title="Something went wrong">
