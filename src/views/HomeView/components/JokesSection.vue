@@ -2,10 +2,12 @@
 import { computed } from "vue";
 import { useRandomJokes } from "../../../composables/useRandomJokes";
 import JokesList from "../../../components/JokesList.vue";
+import LoadingIntersector from "../../../components/LoadingIntersector.vue";
 
 const { query } = useRandomJokes();
 
-const data = computed(() => query.data.value);
+const data = computed(() => query.data.value?.pages[0]);
+const loading = computed(() => query.isFetching.value);
 </script>
 
 <template>
@@ -14,6 +16,7 @@ const data = computed(() => query.data.value);
       <h2>Jokes</h2>
     </div>
     <JokesList v-if="data" :jokes="data" />
+    <LoadingIntersector :loading="loading" @intersect="query.fetchNextPage" />
   </section>
 </template>
 
