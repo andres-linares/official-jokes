@@ -66,3 +66,14 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

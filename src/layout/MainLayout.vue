@@ -8,3 +8,11 @@ import AppHeader from "../components/AppHeader.vue";
     <slot />
   </main>
 </template>
+
+<style scoped>
+main {
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+  margin-block: 2rem;
+}
+</style>

@@ -1,38 +1,25 @@
-import eslintConfigPrettier from "eslint-config-prettier";
-import globals from "globals";
-import js from "@eslint/js";
-import pluginVue from "eslint-plugin-vue";
-import tseslint from "typescript-eslint";
+//@ts-check
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import pluginVue from 'eslint-plugin-vue';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default tseslint.config(
-  js.configs.all,
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
-  ...pluginVue.configs["flat/recommended"],
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...pluginVue.configs['flat/recommended'],
   {
+    plugins: {
+      'typescript-eslint': tseslint.plugin,
+    },
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
       parserOptions: {
-        project: true,
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-        parser: "@typescript-eslint/parser",
-        extraFileExtensions: [".vue"],
+        parser: tseslint.parser,
+        project: './tsconfig.app.json',
+        extraFileExtensions: ['.vue'],
+        sourceType: 'module',
       },
     },
-    rules: {
-      "one-var": "off",
-    },
   },
-  {
-    files: ["**/*.js"],
-    ...tseslint.configs.disableTypeChecked,
-    rules: {
-      ...tseslint.configs.disableTypeChecked.rules,
-      "sort-keys": "off",
-      "no-magic-numbers": "off",
-    },
-  },
-  eslintConfigPrettier,
+  eslintConfigPrettier
 );
