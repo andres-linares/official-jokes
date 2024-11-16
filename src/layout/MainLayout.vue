@@ -5,14 +5,20 @@ import AppHeader from "../components/AppHeader.vue";
 <template>
   <AppHeader />
   <main>
-    <slot />
+    <div class="main-container">
+      <slot />
+    </div>
   </main>
 </template>
 
 <style scoped>
 main {
-  max-width: var(--page-max-width);
-  margin-inline: auto;
   margin-block: 2rem;
+  padding-inline: 2rem;
+}
+
+.main-container {
+  margin-inline: auto;
+  max-width: var(--page-max-width);
 }
 </style>

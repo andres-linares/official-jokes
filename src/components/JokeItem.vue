@@ -51,14 +51,34 @@ const color = computed(() => {
   color: #fff;
   padding: 3rem 1.5rem 1rem;
   border-radius: 1rem;
-  width: 20rem;
   gap: 3rem;
   text-align: center;
   line-height: 1.1;
   cursor: pointer;
   transition: transform 0.3s;
   height: 100%;
+  width: 100%;
   position: relative;
+}
+
+.joke-card:hover {
+  transform: scale(1.025);
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.joke-card.favorite {
+  animation: expand 600ms ease-out forwards;
 }
 
 .star {
@@ -71,10 +91,6 @@ const color = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 4rem;
-}
-
-.joke-card:hover {
-  transform: translateY(-0.25rem);
 }
 
 .joke-setup {

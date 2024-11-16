@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import AppButton from "./AppButton.vue";
 
 const props = defineProps<{
   loading: boolean;
@@ -26,6 +27,7 @@ onMounted(() => {
 
 <template>
   <div ref="intersector">
+    <AppButton v-if="!loading" @click="emit('intersect')">Fetch more</AppButton>
     <span v-if="loading" class="loader"></span>
   </div>
 </template>
