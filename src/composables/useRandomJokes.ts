@@ -8,6 +8,7 @@ export const useRandomJokes = () => {
     queryFn: () => api.getRandomJokes(),
     getNextPageParam: () => 0,
     initialPageParam: 0,
+    select: (data) => data.pages.flatMap((page) => page),
   });
 
   return { query };

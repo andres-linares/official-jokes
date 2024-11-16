@@ -6,13 +6,13 @@ import LoadingIntersector from "../../../components/LoadingIntersector.vue";
 
 const { query } = useRandomJokes();
 
-const data = computed(() => query.data.value?.pages[0]);
-const loading = computed(() => query.isFetching.value);
+const data = computed(() => query.data.value || []);
+const loading = computed(() => query.isFetchingNextPage.value);
 </script>
 
 <template>
   <section>
-    <JokesList v-if="data" :jokes="data" />
+    <JokesList :jokes="data" />
     <LoadingIntersector :loading="loading" @intersect="query.fetchNextPage" />
   </section>
 </template>

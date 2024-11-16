@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 
-defineProps<{
+const props = defineProps<{
   loading: boolean;
 }>();
 
@@ -10,6 +10,8 @@ const emit = defineEmits<{
 }>();
 
 const observer = new IntersectionObserver((entries) => {
+  if (props.loading) return;
+
   if (entries[0].isIntersecting) {
     emit("intersect");
   }
@@ -23,5 +25,34 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="intersector">{{ loading }}</div>
+  <div ref="intersector">
+    <span v-if="loading" class="loader"></span>
+  </div>
 </template>
+
+<style scoped>
+div {
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--color-header);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

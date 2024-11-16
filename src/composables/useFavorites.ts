@@ -41,5 +41,5 @@ export const useFavorites = () => {
 
   const isFavorite = computed(() => (id: number) => favoriteIds.value.includes(id));
 
-  return { query, addFavorite, removeFavorite, isFavorite };
+  return { page, query, addFavorite, removeFavorite, isFavorite };
 };
